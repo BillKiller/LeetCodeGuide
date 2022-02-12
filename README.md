@@ -115,3 +115,27 @@ string minWindow(string s, string t) {
        return min_size > s.size()? "" : s.substr(min_l, min_size);
     }
 ```
+
+
+## 680. 验证回文字符串
+```cpp
+bool isVaild(string s){
+    int l = 0;
+    int r = s.length() -1;
+    while(l < r){
+        if(s[l] != s[r]) return false;
+        l++;
+        r--;
+    }
+    return true;
+}
+bool validPalindrome(string s) {
+    int l =0;
+    int r = s.length() -1;
+    while( l < r && s[l] == s[r]){
+            l++;
+            r--;
+    }
+    return l >= r || isVaild(s.substr(l+1, (r - l))) || isVaild(s.substr(l, (r-l)));
+}
+```
