@@ -55,7 +55,7 @@
         return result;
     }
 ```
-##Best Time to Buy and Sell Stock II (Easy)
+## Best Time to Buy and Sell Stock II (Easy)
 只要在低点买，高点卖就好了，贪心下去一定是最优的。
 ```cpp
    int maxProfit(vector<int>& prices) {
@@ -83,7 +83,7 @@
 ```
 
 
-## 
+## 最小覆盖子串
 ```cpp
 string minWindow(string s, string t) {
        vector<int>chars(128, 0);
