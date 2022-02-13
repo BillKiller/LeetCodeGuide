@@ -32,7 +32,7 @@
     }
 ```
 
-## Partition Labels (Medium)
+## 763. Partition Labels (Medium)
 ```cpp
 
    vector<int> partitionLabels(string s) {
@@ -141,7 +141,7 @@ bool validPalindrome(string s) {
 ```
 
 
-## Longest Word in Dictionary through Deleting (Medium)
+## 524 Longest Word in Dictionary through Deleting (Medium)
 ```cpp
 判断这种是不是相等可以通过双指针来判断，如果target串的指针在末尾证明是符合的。（可以思考一下它普通字符串匹配的区别）
   bool isMatch(string &a, string &b){
