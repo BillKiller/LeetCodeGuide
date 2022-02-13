@@ -139,3 +139,31 @@ bool validPalindrome(string s) {
     return l >= r || isVaild(s.substr(l+1, (r - l))) || isVaild(s.substr(l, (r-l)));
 }
 ```
+
+
+## Longest Word in Dictionary through Deleting (Medium)
+```cpp
+判断这种是不是相等可以通过双指针来判断，如果target串的指针在末尾证明是符合的。（可以思考一下它普通字符串匹配的区别）
+  bool isMatch(string &a, string &b){
+        int l=0,r=0;
+        while(l < a.length() &&  r < b.length()){
+            if(a[l] == b[r]){
+                r++;
+            }
+            l++;
+        }
+        return r == b.length();
+    }
+    string findLongestWord(string s, vector<string>& dictionary) {
+        sort(dictionary.begin(), dictionary.end(), [](string &a, string &b){
+            if(a.length() != b.length()) return a.length() > b.length();
+            else return a < b;
+        });
+        for(auto ss:dictionary){
+            if(isMatch(s, ss)){
+                return ss;
+            }
+        }
+        return "";
+    }
+```
