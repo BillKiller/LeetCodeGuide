@@ -167,3 +167,70 @@ bool validPalindrome(string s) {
         return "";
     }
 ```
+
+
+## 二分搜索
+根据while循环条件不同分两种情况:
+1.while(low < high)
+此时的循环不包含low=high,所以每次循环的查找区间为[low, high),左闭右开，则high指向的位
+置是不被包含在查找区间的，所以此时high的初始值 取length,循环里，high=mid。
+2.while(low<=high)
+此时的循环包含low=high,查找区间为[low, high]，左闭右闭，则high指向的位置被包含在查找区
+间中，所以此时的high初始值取length-1,循环里，high=mid-1。
+
+```cpp
+ int mySqrt(int x) {
+        if(x == 0) return 0;
+        int l =1, r=x;
+        while(l <= r){
+            int mid = l + (r-l)/2;
+            if(mid == (x / mid)){
+                return mid;
+            }else if(mid > (x / mid)){
+                r = mid - 1;
+            }else{
+                l = mid + 1;
+            }
+        }
+        return r;
+    }
+```
+
+## 34. 在排序数组中查找元素的第一个和最后一个位置
+```cpp
+  vector<int> searchRange(vector<int>& nums, int target) {
+        if(nums.empty()) return vector<int>{-1, -1};
+        int startIndex = lower_bound(nums, target);
+        int endIndex = upper_bound(nums, target) - 1;
+        if(startIndex == nums.size() || nums[startIndex] != target)
+            return vector<int>{-1, -1};
+        else
+            return vector<int>{startIndex, endIndex};
+    }
+    int lower_bound(vector<int>&nums, int target){
+        int l = 0, r = nums.size();
+        while(l < r){
+            int mid = l + (r - l) /2;
+            if(nums[mid] >= target){
+                r = mid;
+            }else{
+                l = mid + 1;
+            }
+        }
+        return l;
+    }
+
+     int upper_bound(vector<int>&nums, int target){
+        int l = 0, r = nums.size();
+        while(l < r){
+            int mid = l + (r - l) /2;
+            if(nums[mid] <= target){
+                l = mid + 1; //把答案排除
+            }else{
+                r = mid;
+            }
+        }
+        return l;
+    }
+
+```
